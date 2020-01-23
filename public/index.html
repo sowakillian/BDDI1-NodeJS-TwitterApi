@@ -18,13 +18,43 @@
         socket.addEventListener('message', event => {
             console.log("new message", event.data);
 
+            console.log(event);
+            document.querySelector("#alltweets").insertAdjacentHTML('afterend', '<div id="two">'+ event.data + '</div>');
+
             socket.send("message received!");
         });
+
     </script>
 </head>
 
 <body>
-<h1>Empty HTML</h1>
+<section>
+    <div>
+        <div id="alltweets"></div>
+
+        <div id="apple">
+            <h2>Apple</h2>
+            <div class="apple-tweets"></div>
+        </div>
+        <div id="samsung">
+            <h2>Samsung</h2>
+            <div class="samsung-tweets"></div>
+        </div>
+        <div id="huawei">
+            <h2>Huawei</h2>
+            <div class="huawei-tweets"></div>
+        </div>
+        <div id="xiaomi">
+            <h2>Xiaomi</h2>
+            <div class="xiaomi-tweets"></div>
+        </div>
+        <div id="oneplus">
+            <h2>Oneplus</h2>
+            <div class="oneplus-tweets"></div>
+        </div>
+
+    </div>
+</section>
 
 </body>
 

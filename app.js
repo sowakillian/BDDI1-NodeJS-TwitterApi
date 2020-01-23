@@ -17,7 +17,21 @@ wsServer.on("connection", client => {
     client.send("Welcome!");
 
     twitterStream.on("data", tweet => {
-        client.send(tweet.text);
+
+        const sendTweetToClient = (brand) => {
+            client.send(brand + ' : ' + tweet.text);
+        };
+
+        if (tweet.text.includes('iphone')) {
+            sendTweetToClient('iphone')
+        } else if (tweet.text.includes('samsung')) {
+            sendTweetToClient('samsung');
+        } else if (tweet.text.includes('huawei')) {
+            sendTweetToClient('huawei');
+        } else if (tweet.text.includes('xiaomi')) {
+            sendTweetToClient('xiaomi');
+        }
+
     })
 });
 
