@@ -12,9 +12,13 @@ wsServer.on("connection", client => {
 
     client.on("message", message => {
         console.log("message from client: ", message);
-    })
+    });
 
     client.send("Welcome!");
-})
+
+    twitterStream.on("data", tweet => {
+        client.send(tweet.text);
+    })
+});
 
 server.listen(8080);
