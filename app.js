@@ -19,11 +19,15 @@ wsServer.on("connection", client => {
     twitterStream.on("data", tweet => {
 
         const sendTweetToClient = (brand) => {
-            client.send(brand + ' : ' + tweet.text);
+            const tweetSorted = {
+                brand: brand,
+                tweet: tweet.text
+            };
+            client.send(JSON.stringify(tweetSorted));
         };
 
-        if (tweet.text.includes('iphone')) {
-            sendTweetToClient('iphone')
+        if (tweet.text.includes('apple')) {
+            sendTweetToClient('apple')
         } else if (tweet.text.includes('samsung')) {
             sendTweetToClient('samsung');
         } else if (tweet.text.includes('huawei')) {

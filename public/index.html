@@ -6,53 +6,33 @@
     <title>TwitterAPI</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <script>
-        console.log("It works!");
-        const socket = new WebSocket(`ws://${window.location.hostname}:${window.location.port}`);
-
-        socket.addEventListener('open', event => {
-            console.log("connected", event);
-        });
-
-        socket.addEventListener('message', event => {
-            console.log("new message", event.data);
-
-            console.log(event);
-            document.querySelector("#alltweets").insertAdjacentHTML('afterend', '<div id="two">'+ event.data + '</div>');
-
-            socket.send("message received!");
-        });
-
-    </script>
+    <link href="./index.css" rel="stylesheet">
+    <script src="./index.js"></script>
 </head>
 
 <body>
 <section>
-    <div>
-        <div id="alltweets"></div>
-
+    <div class="brands">
         <div id="apple">
             <h2>Apple</h2>
+            <span class="apple-counter">0</span>
             <div class="apple-tweets"></div>
         </div>
         <div id="samsung">
             <h2>Samsung</h2>
+            <span class="samsung-counter">0</span>
             <div class="samsung-tweets"></div>
         </div>
         <div id="huawei">
             <h2>Huawei</h2>
+            <span class="samsung-counter">0</span>
             <div class="huawei-tweets"></div>
         </div>
         <div id="xiaomi">
             <h2>Xiaomi</h2>
+            <span class="xiaomi-counter">0</span>
             <div class="xiaomi-tweets"></div>
         </div>
-        <div id="oneplus">
-            <h2>Oneplus</h2>
-            <div class="oneplus-tweets"></div>
-        </div>
-
     </div>
 </section>
 

@@ -1,0 +1,13 @@
+body {
+    background-color: #12A0F9;
+    color: white;
+}
+
+.brands {
+    display: flex;
+}
+
+.brands div {
+    width: 25%;
+    text-align: center;
+}
