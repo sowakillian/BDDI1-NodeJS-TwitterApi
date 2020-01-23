@@ -1,0 +1,25 @@
+{
+  "name": "twitter-api",
+  "version": "1.0.0",
+  "description": "NodeJS application to get tweets on real time from twitter and do some interactions with them with the client",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sowakillian/NodeJS-TwitterApi.git"
+  },
+  "author": "Sowa Killian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sowakillian/NodeJS-TwitterApi/issues"
+  },
+  "homepage": "https://github.com/sowakillian/NodeJS-TwitterApi#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
