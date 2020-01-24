@@ -1,6 +1,4 @@
-console.log("It works!");
 const socket = new WebSocket(`ws://${window.location.hostname}:${window.location.port}`);
-
 
 socket.addEventListener('open', event => {
     console.log("connected", event);
@@ -20,6 +18,7 @@ const brandCounters = {
 socket.addEventListener('message', event => {
     console.log("new message", event.data);
     tweetData = JSON.parse(event.data);
+
 
     const updateBrandState = (brand) => {
         brandCounters[brand] +=1;
@@ -53,3 +52,10 @@ socket.addEventListener('message', event => {
 
     socket.send("message received!");
 });
+
+window.onload = () => {
+    document.querySelector('#add-honor').addEventListener('click', () => {
+        console.warn('honor added');
+    });
+};
+
