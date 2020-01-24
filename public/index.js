@@ -21,49 +21,34 @@ socket.addEventListener('message', event => {
     console.log("new message", event.data);
     tweetData = JSON.parse(event.data);
 
+    const updateBrandState = (brand) => {
+        brandCounters[brand] +=1;
+        document.querySelector(`.${brand}-counter`).innerHTML = brandCounters[brand];
+        document.querySelector(`#${brand}`).style.width = 130+brandCounters[brand]*10+"px";
+        document.querySelector(`#${brand}`).style.height = 130+brandCounters[brand]*10+"px";
+    };
+
     switch (tweetData.brand) {
         case 'apple':
-            brandCounters.apple +=1;
-            document.querySelector(".apple-counter").innerHTML = brandCounters.apple;
-            document.querySelector("#apple").style.width = 130+brandCounters.apple*10+"px";
-            document.querySelector("#apple").style.height = 130+brandCounters.apple*10+"px";
+            updateBrandState('apple');
             break;
         case 'samsung':
-            brandCounters.samsung +=1;
-            document.querySelector(".samsung-counter").innerHTML = brandCounters.samsung;
-            document.querySelector("#samsung").style.width = 130+brandCounters.samsung*10+"px";
-            document.querySelector("#samsung").style.height = 130+brandCounters.samsung*10+"px";
+            updateBrandState('samsung');
             break;
         case 'huawei':
-            brandCounters.huawei +=1;
-            document.querySelector(".huawei-counter").innerHTML = brandCounters.huawei;
-            document.querySelector("#huawei").style.width = 130+brandCounters.huawei*10+"px";
-            document.querySelector("#huawei").style.height = 130+brandCounters.huawei*10+"px";
+            updateBrandState('huawei');
             break;
         case 'xiaomi':
-            brandCounters.xiaomi +=1;
-            document.querySelector(".xiaomi-counter").innerHTML = brandCounters.xiaomi;
-            document.querySelector("#xiaomi").style.width = 130+brandCounters.xiaomi*10+"px";
-            document.querySelector("#xiaomi").style.height = 130+brandCounters.xiaomi*10+"px";
+            updateBrandState('xiaomi');
             break;
         case 'honor':
-            brandCounters.honor +=1;
-            document.querySelector(".honor-counter").innerHTML = brandCounters.xiaomi;
-            document.querySelector("#honor").style.width = 130+brandCounters.xiaomi*10+"px";
-            document.querySelector("#honor").style.height = 130+brandCounters.xiaomi*10+"px";
+            updateBrandState('honor');
             break;
         case 'sony':
-            brandCounters.sony +=1;
-            document.querySelector(".sony-counter").innerHTML = brandCounters.xiaomi;
-            document.querySelector("#sony").style.width = 130+brandCounters.xiaomi*10+"px";
-            document.querySelector("#sony").style.height = 130+brandCounters.xiaomi*10+"px";
+            updateBrandState('sony');
             break;
         case 'lg':
-            brandCounters.lg +=1;
-            document.querySelector(".lg-counter").innerHTML = brandCounters.xiaomi;
-            document.querySelector("#lg").style.width = 130+brandCounters.xiaomi*10+"px";
-            document.querySelector("#lg").style.height = 130+brandCounters.xiaomi*10+"px";
-
+            updateBrandState('lg');
     }
 
     socket.send("message received!");
