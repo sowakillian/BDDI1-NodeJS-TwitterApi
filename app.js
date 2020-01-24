@@ -17,25 +17,7 @@ wsServer.on("connection", client => {
     client.send("Welcome!");
 
     twitterStream.on("data", tweet => {
-
-        const sendTweetToClient = (brand) => {
-            const tweetSorted = {
-                brand: brand,
-                tweet: tweet.text
-            };
-            client.send(JSON.stringify(tweetSorted));
-        };
-
-        if (tweet.text.includes('apple')) {
-            sendTweetToClient('apple')
-        } else if (tweet.text.includes('samsung')) {
-            sendTweetToClient('samsung');
-        } else if (tweet.text.includes('huawei')) {
-            sendTweetToClient('huawei');
-        } else if (tweet.text.includes('xiaomi')) {
-            sendTweetToClient('xiaomi');
-        }
-
+        client.send(tweet);
     })
 });
 
