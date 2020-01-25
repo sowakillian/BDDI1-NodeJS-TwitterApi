@@ -2,7 +2,10 @@
 
 I developped this application during my courses of NodeJS at my school [Gobelins](https://gobelins.fr).
 The aim was to develop a back-end application in NodeJS to process with the twitter feed.
-This application updates automatically in real-time and there is a client to display the datas and some statistics.
+
+## What does this application do ?
+This application get tweets from Twitter with a request and updates automatically datas in real-time. There is a filter for the request on some brands (Samsung, Apple..) and the server send the datas to the client. On the client, the more there are tweets  about a brand, the more the counter and the size of the brand increases
+
 
 ## Setup
 
@@ -38,6 +41,32 @@ $ node app
 ├── .env.example # management of env vars
 ├── app.js # app entrypoint
 
+```
+
+## Add a new brand 
+
+1. in **public/index.js**, edit the switch case tweetData.brand and add the brand
+```javascript
+case 'nameOfTheBrand':
+    updateBrandState('nameOfTheBrand');
+    break;
+```
+        
+            
+2. in **twitter/index.js**, add the brand into the parameters of httpStream request
+
+```javascript
+statuses/filter.json?track=samsung,apple,huawei,xiaomi,honor,sony,lg,nameOfTheBrand
+```
+
+3. in **public/index.html**, add the brand to the template
+```html
+<div id="brandname" class="brands-item">
+    <h2>BrandName</h2>
+    <span class="brandname-counter">0</span>
+    <div class="brandname-tweets"></div>
+    <span class="brandname-bar"></span>
+</div>
 ```
 
 ## About the project
