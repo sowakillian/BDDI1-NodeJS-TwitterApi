@@ -14,7 +14,6 @@ const brandCounters = {
     lg: 0,
 };
 
-
 socket.addEventListener('message', event => {
     console.log("new message", event.data);
     tweetData = JSON.parse(event.data);
@@ -50,12 +49,33 @@ socket.addEventListener('message', event => {
             updateBrandState('lg');
     }
 
-    socket.send("message received!");
+    //socket.send("message received!");
 });
 
 window.onload = () => {
-    document.querySelector('#add-honor').addEventListener('click', () => {
-        console.warn('honor added');
+    const btnLove = document.querySelector('#sendlove');
+    const btnStop = document.querySelector("#stop");
+    const btnStart = document.querySelector("#start");
+    btnLove.addEventListener('click', () => {
+        const msg = {
+            type: "love",
+            text: "Cher développeur, BRAVO pour cette API !"
+        };
+        socket.send(JSON.stringify(msg));
+    });
+
+    btnStart.addEventListener('click', () => {
+        const msg = {
+            type: "start",
+        };
+        socket.send(JSON.stringify(msg));
+    });
+
+    btnStop.addEventListener('click', () => {
+        const msg = {
+            type: "stop",
+        };
+        socket.send(JSON.stringify(msg));
     });
 };
 
